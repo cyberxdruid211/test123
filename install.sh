@@ -80,7 +80,11 @@ fi
 echo
 echo "OS System is compatible with $dist_ver / $arch_type"
 echo
-
+#
+DOWNLOAD_URL="https://github.com/cyberxdruid211/test123/releases/download/v0.1a/swiftlygo-$arch_type"
+DEST_DIR="/usr/libexec/swiftlygo/bin/"
+EXECUTABLE_NAME="swiftlygo"
+#
 mkdir -p "$DEST_DIR"
 # Save environment variables to .env file
 cat << EOF > /usr/libexec/swiftlygo/bin/swiftlygo.env
@@ -96,10 +100,6 @@ OS_FILE_NAME=$os_file_name
 EOF
 
 # Download swiftlygo and install
-DOWNLOAD_URL="https://github.com/cyberxdruid211/test123/releases/download/v0.1a/swiftlygo-$arch_type"
-DEST_DIR="/usr/libexec/swiftlygo/bin/"
-EXECUTABLE_NAME="swiftlygo"
-
 rm "$DEST_DIR/$EXECUTABLE_NAME"
 curl -L "$DOWNLOAD_URL" -o "$DEST_DIR/$EXECUTABLE_NAME" && chmod +x "$DEST_DIR/$EXECUTABLE_NAME"
 ln -sf /usr/libexec/swiftlygo/bin/swiftlygo /usr/bin/swiftlygo
