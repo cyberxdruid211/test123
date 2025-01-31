@@ -23,7 +23,8 @@ case $arch in
         exit 1
         ;;
 esac
-
+echo
+echo "Checking your OS system for Swift compatability ..."
 if test -r /etc/os-release; then
 . /etc/os-release
 
@@ -78,7 +79,7 @@ else
 fi
 # OS System is compatible with $dist_ver / $arch_type
 echo
-echo "OS System is compatible with $dist_ver / $arch_type"
+echo "Success! Your OS System is compatible with $dist_ver / $arch_type"
 echo
 #
 DOWNLOAD_URL="https://github.com/cyberxdruid211/test123/releases/download/v0.1a/swiftlygo-$arch_type"
@@ -98,14 +99,42 @@ ARCH_TYPE=$arch_type
 OS_DIR=$os_dir
 OS_FILE_NAME=$os_file_name
 EOF
+#
+echo "Installing SwiftlyGo ..."
 
-# Download swiftlygo and install
-rm "$DEST_DIR/$EXECUTABLE_NAME"
-curl -L "$DOWNLOAD_URL" -o "$DEST_DIR/$EXECUTABLE_NAME" && chmod +x "$DEST_DIR/$EXECUTABLE_NAME"
-ln -sf /usr/libexec/swiftlygo/bin/swiftlygo /usr/bin/swiftlygo
-# use this as an install method
+install_swiftlygo() {
+    # Remove existing executable if it exists
+    rm "$DEST_DIR/$EXECUTABLE_NAME"
+    # Download, install, and make executable
+    if curl -sL "$DOWNLOAD_URL" -o "$DEST_DIR/$EXECUTABLE_NAME" && chmod +x "$DEST_DIR/$EXECUTABLE_NAME"; then
+        # Create a symbolic link
+        ln -sf "$DEST_DIR/$EXECUTABLE_NAME" /usr/bin/swiftlygo
+        echo
+        echo "Congratulations! Swiftlygo has been successfully installed."
+        logo
+        echo "For help run 'swiftlygo -h'"
+        echo
+    else
+        echo "Installation of Swiftlygo failed."
+        echo
+        return 1
+    fi
+}
+logo() {
+cat << EOF
+ ____          _  __ _   _        ____       
+/ ___|_      _(_)/ _| |_| |_   _ / ___| ___  
+\___ \ \ /\ / / | |_| __| | | | | |  _ / _ \ 
+ ___) \ V  V /| |  _| |_| | |_| | |_| | (_) |
+|____/ \_/\_/ |_|_|  \__|_|\__, |\____|\___/ 
+                           |___/             
+EOF
+}
+#
+install_swiftlygo
+
+# swiftlygo installation location
 # /usr/libexec/swiftlygo/bin/
-# ├── swiftlygo
+# ├── swiftlygo -> symlink to /usr/bin/swiftlygo
 # └── swiftlygo.env
 #
-# sudo ln -sf /usr/libexec/swiftlygo/bin/swiftlygo /usr/bin/swiftlygo
