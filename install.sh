@@ -104,7 +104,7 @@ echo "Installing SwiftlyGo ..."
 
 install_swiftlygo() {
     # Remove existing executable if it exists
-    rm "$DEST_DIR/$EXECUTABLE_NAME"
+    rm "$DEST_DIR/$EXECUTABLE_NAME" 2>/dev/null
     # Download, install, and make executable
     if curl -sL "$DOWNLOAD_URL" -o "$DEST_DIR/$EXECUTABLE_NAME" && chmod +x "$DEST_DIR/$EXECUTABLE_NAME"; then
         # Create a symbolic link
