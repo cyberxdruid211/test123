@@ -82,7 +82,7 @@ echo
 echo "Success! Your OS System is compatible with $dist_ver / $arch_type"
 echo
 #
-DOWNLOAD_URL="https://github.com/cyberxdruid211/test123/releases/download/v0.1a/swiftlygo-$arch_type"
+DOWNLOAD_URL="https://github.com/cyberxdruid211/test123/releases/download/v0.2a/swiftlygo-$arch_type"
 DEST_DIR="/usr/libexec/swiftlygo/bin/"
 EXECUTABLE_NAME="swiftlygo"
 #
