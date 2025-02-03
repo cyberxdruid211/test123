@@ -89,7 +89,7 @@ EXECUTABLE_NAME="swiftlygo"
 mkdir -p "$DEST_DIR"
 # Save environment variables to .env file
 cat << EOF > /usr/libexec/swiftlygo/bin/swiftlygo.env
-LATEST_VER=6.0.3
+LATEST_VER=6.0.2
 URL_BASE=https://download.swift.org
 ID=$id
 DIST_VER=$dist_ver
