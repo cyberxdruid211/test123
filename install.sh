@@ -89,14 +89,14 @@ EXECUTABLE_NAME="swiftlygo"
 mkdir -p "$DEST_DIR"
 # Save environment variables to .env file
 cat << EOF > /usr/libexec/swiftlygo/bin/swiftlygo.env
-LATEST_VER=6.0.2
-URL_BASE=https://download.swift.org
-ID=$id
-DIST_VER=$dist_ver
 ARCH=$arch
 ARCH_TYPE=$arch_type
+DIST_VER=$dist_ver
+ID=$id
+LATEST_VER=6.0.3
 OS_DIR=$os_dir
 OS_FILE_NAME=$os_file_name
+URL_BASE=https://download.swift.org
 EOF
 #
 echo "Installing SwiftlyGo ..."
