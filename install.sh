@@ -91,7 +91,6 @@ mkdir -p "$DEST_DIR"
 cat << EOF > /usr/libexec/swiftlygo/bin/swiftlygo.env
 LATEST_VER=6.0.3
 URL_BASE=https://download.swift.org
-SWIFT_VER=6.0.3
 ID=$id
 DIST_VER=$dist_ver
 ARCH=$arch
